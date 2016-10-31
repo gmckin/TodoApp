@@ -60,5 +60,15 @@ namespace ToDo.DataAccess
 
       return db.SaveChanges() > 0;
     }
+
+    public List<Todo> GetCompletedList()
+    {
+      return db.Todoes.Where(t => t.Completed == true).ToList();
+    }
+
+    public List<Todo> GetIncompleteList()
+    {
+      return db.Todoes.Where(t => t.Completed == false).ToList();
+    }
   }
 }

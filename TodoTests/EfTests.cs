@@ -48,13 +48,31 @@ namespace TodoTests
     [Fact]
     public void Test_DeleteTodo()
     {
-      var id = 5;
+      var id = 6;
       var expected = db.Todoes.Where(x => x.TodoId == id).FirstOrDefault();
       var data = new EfData();
 
       var actual = data.DeleteTodo(expected, id);
 
       Assert.True(actual);
+    }
+
+    [Fact]
+    public void Test_GetCompleted()
+    {
+      var data = new EfData();
+      var actual = data.GetCompletedList();
+
+      Assert.NotNull(actual);
+    }
+
+    [Fact]
+    public void Test_GetInComplete()
+    {
+      var data = new EfData();
+      var actual = data.GetIncompleteList();
+
+      Assert.NotNull(actual);
     }
   }
 }
